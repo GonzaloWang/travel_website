@@ -12,4 +12,12 @@
     <artifactId>travel-dao</artifactId>
 
 
+    <dependencies>
+        <!--dao模块依赖core模块-->
+        <dependency>
+            <groupId>com.itheima.travel</groupId>
+            <artifactId>travel-core</artifactId>
+        </dependency>
+
+    </dependencies>
 </project>

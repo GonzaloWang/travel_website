@@ -12,4 +12,18 @@
     <artifactId>travel-service</artifactId>
 
 
+    <dependencies>
+        <!--service模块依赖dao模块和redis模块-->
+        <dependency>
+            <groupId>com.itheima.travel</groupId>
+            <artifactId>travel-dao</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.itheima.travel</groupId>
+            <artifactId>travel-redis</artifactId>
+        </dependency>
+
+    </dependencies>
+
 </project>

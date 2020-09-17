@@ -7,6 +7,7 @@
     <groupId>com.itheima.travel</groupId>
     <artifactId>travel-parent</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <!--聚合,方便统一管理-->
     <modules>
         <module>travel-core</module>
         <module>travel-commons</module>
@@ -21,7 +22,43 @@
         <!--配置属性变量-->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!--定义项目整体版本-->
+        <itheima.version>1.0-SNAPSHOT</itheima.version>
     </properties>
+    <!--锁定jar包版本-->
+    <dependencyManagement>
+        <dependencies>
+
+            <!--基础模块声明 start-->
+            <dependency>
+                <groupId>com.itheima.travel</groupId>
+                <artifactId>travel-commons</artifactId>
+                <version>${itheima.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.itheima.travel</groupId>
+                <artifactId>travel-core</artifactId>
+                <version>${itheima.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.itheima.travel</groupId>
+                <artifactId>travel-dao</artifactId>
+                <version>${itheima.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.itheima.travel</groupId>
+                <artifactId>travel-redis</artifactId>
+                <version>${itheima.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.itheima.travel</groupId>
+                <artifactId>travel-service</artifactId>
+                <version>${itheima.version}</version>
+            </dependency>
+            <!--基础模块声明 end-->
+
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
@@ -32,5 +69,5 @@
         </dependency>
     </dependencies>
 
-    
+
 </project>

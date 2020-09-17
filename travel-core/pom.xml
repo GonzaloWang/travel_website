@@ -11,5 +11,12 @@
 
     <artifactId>travel-core</artifactId>
 
+    <dependencies>
+        <dependency>
+            <!--travel-core模块依赖travel-commons模块-->
+            <groupId>com.itheima.travel</groupId>
+            <artifactId>travel-commons</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

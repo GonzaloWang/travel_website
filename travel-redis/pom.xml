@@ -11,5 +11,13 @@
 
     <artifactId>travel-redis</artifactId>
 
+    <dependencies>
+        <!--redis模块依赖core模块-->
+        <dependency>
+            <groupId>com.itheima.travel</groupId>
+            <artifactId>travel-core</artifactId>
+        </dependency>
+
+    </dependencies>
 
 </project>
