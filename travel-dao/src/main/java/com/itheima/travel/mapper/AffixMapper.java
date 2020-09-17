@@ -20,18 +20,38 @@ import org.apache.ibatis.type.JdbcType;
 
 @Mapper
 public interface AffixMapper {
+    /**
+     * @Description 按条件统计
+     * @param example 查询条件
+     * @return 统计结果
+     */
     @SelectProvider(type=AffixSqlProvider.class, method="countByExample")
     long countByExample(AffixExample example);
 
+    /**
+     * @Description 按条件删除
+     * @param example 查询条件
+     * @return 影响行数
+     */
     @DeleteProvider(type=AffixSqlProvider.class, method="deleteByExample")
     int deleteByExample(AffixExample example);
 
+    /**
+     * @Description 按主键删除
+     * @param id 主键
+     * @return 影响行数
+     */
     @Delete({
         "delete from tab_affix",
         "where id = #{id,jdbcType=BIGINT}"
     })
     int deleteByPrimaryKey(Long id);
 
+    /**
+     * @Description 插入记录：insert则会插入所有字段，会插入null
+     * @param record 插入对象
+     * @return 影响行数
+     */
     @Insert({
         "insert into tab_affix (business_id, business_type, ",
         "suffix, file_name, ",
@@ -43,10 +63,20 @@ public interface AffixMapper {
     @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Long.class)
     int insert(Affix record);
 
+    /**
+     * @Description 插入记录：insertSelective：只会插入数据不为null的字段值
+     * @param record 插入对象
+     * @return 影响行数
+     */
     @InsertProvider(type=AffixSqlProvider.class, method="insertSelective")
     @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Long.class)
     int insertSelective(Affix record);
 
+    /**
+     * @Description 按条件查询
+     * @param example 查询条件
+     * @return 符合条件的结果集
+     */
     @SelectProvider(type=AffixSqlProvider.class, method="selectByExample")
     @Results({
         @Result(column="id", property="id", jdbcType=JdbcType.BIGINT, id=true),
@@ -58,6 +88,11 @@ public interface AffixMapper {
     })
     List<Affix> selectByExample(AffixExample example);
 
+    /**
+     * @Description 按主键查询对象
+     * @param id 主键
+     * @return 符合条件的结果
+     */
     @Select({
         "select",
         "id, business_id, business_type, suffix, file_name, path_url",
@@ -74,15 +109,41 @@ public interface AffixMapper {
     })
     Affix selectByPrimaryKey(Long id);
 
+    /**
+     * @Description 按条件修改数据
+     * @param record 要修改的部分值组成的对象，其中有些属性为null则表示该项不修改
+     * @param example 修改条件
+     * @return 影响行数
+     */
     @UpdateProvider(type=AffixSqlProvider.class, method="updateByExampleSelective")
     int updateByExampleSelective(@Param("record") Affix record, @Param("example") AffixExample example);
 
+    /**
+     * @Description 按条件修改数据
+     * @param record 要修改的部分值组成的对象，其中有些属性为null会被修改
+     * @param example 修改条件
+     * @return 影响行数
+     */
     @UpdateProvider(type=AffixSqlProvider.class, method="updateByExample")
     int updateByExample(@Param("record") Affix record, @Param("example") AffixExample example);
 
+    /**
+     * @Description 按主键修改数据
+     * @param record 要修改的部分值组成的对象，其中有些属性为null则表示该项不修改
+     * @return 影响行数
+     */
     @UpdateProvider(type=AffixSqlProvider.class, method="updateByPrimaryKeySelective")
     int updateByPrimaryKeySelective(Affix record);
 
+    /**
+     * @Description 按主键修改数据
+     * @param record 要修改的部分值组成的对象，其中有些属性为null会被修改
+     * @return 影响行数
+     *//**
+     * @Description 按主键修改数据
+     * @param record 要修改的部分值组成的对象，其中有些属性为null会被修改
+     * @return 影响行数
+     */
     @Update({
         "update tab_affix",
         "set business_id = #{businessId,jdbcType=BIGINT},",

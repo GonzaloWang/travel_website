@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.jdbc.SQL;
 
+/**
+ * Af1fixSqlProvider则为动态SQL的拼接处理类，用于SQL的条件拼接
+ */
 public class AffixSqlProvider {
 
     public String countByExample(AffixExample example) {
