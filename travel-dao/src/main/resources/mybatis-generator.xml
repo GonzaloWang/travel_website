@@ -71,27 +71,27 @@
         </javaClientGenerator>
 
         <table tableName="tab_affix" domainObjectName="Affix">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+            <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
         </table>
 
         <table tableName="tab_category" domainObjectName="Category" >
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+            <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
         </table>
 
         <table tableName="tab_favorite" domainObjectName="Favorite">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+            <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
         </table>
 
         <table tableName="tab_seller" domainObjectName="Seller">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+            <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
         </table>
 
         <table tableName="tab_user" domainObjectName="User">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+            <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
         </table>
 
         <table tableName="tab_route" domainObjectName="Route">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+            <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
         </table>
 
     </context>
