@@ -28,6 +28,10 @@ public class UserSqlProvider {
         SQL sql = new SQL();
         sql.INSERT_INTO("tab_user");
         
+        if (record.getId() != null) {
+            sql.VALUES("id", "#{id,jdbcType=BIGINT}");
+        }
+        
         if (record.getUsername() != null) {
             sql.VALUES("username", "#{username,jdbcType=VARCHAR}");
         }

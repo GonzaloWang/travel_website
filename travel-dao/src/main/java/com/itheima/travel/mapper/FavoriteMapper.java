@@ -12,7 +12,6 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.annotations.UpdateProvider;
@@ -33,14 +32,14 @@ public interface FavoriteMapper {
     int deleteByPrimaryKey(Long id);
 
     @Insert({
-        "insert into tab_favorite (user_id, route_id)",
-        "values (#{userId,jdbcType=BIGINT}, #{routeId,jdbcType=BIGINT})"
+        "insert into tab_favorite (id, user_id, ",
+        "route_id)",
+        "values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, ",
+        "#{routeId,jdbcType=BIGINT})"
     })
-    @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Long.class)
     int insert(Favorite record);
 
     @InsertProvider(type=FavoriteSqlProvider.class, method="insertSelective")
-    @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Long.class)
     int insertSelective(Favorite record);
 
     @SelectProvider(type=FavoriteSqlProvider.class, method="selectByExample")

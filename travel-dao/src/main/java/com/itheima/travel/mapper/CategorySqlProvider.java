@@ -28,6 +28,10 @@ public class CategorySqlProvider {
         SQL sql = new SQL();
         sql.INSERT_INTO("tab_category");
         
+        if (record.getId() != null) {
+            sql.VALUES("id", "#{id,jdbcType=INTEGER}");
+        }
+        
         if (record.getCategoryName() != null) {
             sql.VALUES("category_name", "#{categoryName,jdbcType=VARCHAR}");
         }

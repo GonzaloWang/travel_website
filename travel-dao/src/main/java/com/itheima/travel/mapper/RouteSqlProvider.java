@@ -28,6 +28,10 @@ public class RouteSqlProvider {
         SQL sql = new SQL();
         sql.INSERT_INTO("tab_route");
         
+        if (record.getId() != null) {
+            sql.VALUES("id", "#{id,jdbcType=BIGINT}");
+        }
+        
         if (record.getRouteName() != null) {
             sql.VALUES("route_name", "#{routeName,jdbcType=VARCHAR}");
         }

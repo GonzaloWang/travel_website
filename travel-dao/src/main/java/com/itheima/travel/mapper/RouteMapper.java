@@ -12,7 +12,6 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.annotations.UpdateProvider;
@@ -33,22 +32,20 @@ public interface RouteMapper {
     int deleteByPrimaryKey(Long id);
 
     @Insert({
-        "insert into tab_route (route_name, price, ",
-        "route_Introduce, flag, ",
-        "is_theme_tour, attention_count, ",
+        "insert into tab_route (id, route_name, ",
+        "price, route_Introduce, ",
+        "flag, is_theme_tour, attention_count, ",
         "category_id, seller_id, ",
         "created_time)",
-        "values (#{routeName,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, ",
-        "#{routeIntroduce,jdbcType=VARCHAR}, #{flag,jdbcType=CHAR}, ",
-        "#{isThemeTour,jdbcType=CHAR}, #{attentionCount,jdbcType=INTEGER}, ",
+        "values (#{id,jdbcType=BIGINT}, #{routeName,jdbcType=VARCHAR}, ",
+        "#{price,jdbcType=DECIMAL}, #{routeIntroduce,jdbcType=VARCHAR}, ",
+        "#{flag,jdbcType=CHAR}, #{isThemeTour,jdbcType=CHAR}, #{attentionCount,jdbcType=INTEGER}, ",
         "#{categoryId,jdbcType=BIGINT}, #{sellerId,jdbcType=BIGINT}, ",
         "#{createdTime,jdbcType=TIMESTAMP})"
     })
-    @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Long.class)
     int insert(Route record);
 
     @InsertProvider(type=RouteSqlProvider.class, method="insertSelective")
-    @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Long.class)
     int insertSelective(Route record);
 
     @SelectProvider(type=RouteSqlProvider.class, method="selectByExample")

@@ -12,7 +12,6 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.annotations.UpdateProvider;
@@ -33,14 +32,14 @@ public interface CategoryMapper {
     int deleteByPrimaryKey(Integer id);
 
     @Insert({
-        "insert into tab_category (category_name, category_url)",
-        "values (#{categoryName,jdbcType=VARCHAR}, #{categoryUrl,jdbcType=VARCHAR})"
+        "insert into tab_category (id, category_name, ",
+        "category_url)",
+        "values (#{id,jdbcType=INTEGER}, #{categoryName,jdbcType=VARCHAR}, ",
+        "#{categoryUrl,jdbcType=VARCHAR})"
     })
-    @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Integer.class)
     int insert(Category record);
 
     @InsertProvider(type=CategorySqlProvider.class, method="insertSelective")
-    @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Integer.class)
     int insertSelective(Category record);
 
     @SelectProvider(type=CategorySqlProvider.class, method="selectByExample")

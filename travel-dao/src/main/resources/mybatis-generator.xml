@@ -30,7 +30,7 @@
 
         <!--jdbc的数据库连接-->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://127.0.0.1:3306/spring-travel"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/spring-travel-110"
                         userId="root"
                         password="root" />
 

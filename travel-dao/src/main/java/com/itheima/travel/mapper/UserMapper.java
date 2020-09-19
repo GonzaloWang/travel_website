@@ -12,7 +12,6 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.annotations.UpdateProvider;
@@ -33,18 +32,18 @@ public interface UserMapper {
     int deleteByPrimaryKey(Long id);
 
     @Insert({
-        "insert into tab_user (username, password, ",
-        "real_name, birthday, ",
-        "sex, telephone, email)",
-        "values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, ",
-        "#{realName,jdbcType=VARCHAR}, #{birthday,jdbcType=TIMESTAMP}, ",
-        "#{sex,jdbcType=CHAR}, #{telephone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR})"
+        "insert into tab_user (id, username, ",
+        "password, real_name, ",
+        "birthday, sex, telephone, ",
+        "email)",
+        "values (#{id,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, ",
+        "#{password,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, ",
+        "#{birthday,jdbcType=TIMESTAMP}, #{sex,jdbcType=CHAR}, #{telephone,jdbcType=VARCHAR}, ",
+        "#{email,jdbcType=VARCHAR})"
     })
-    @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Long.class)
     int insert(User record);
 
     @InsertProvider(type=UserSqlProvider.class, method="insertSelective")
-    @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Long.class)
     int insertSelective(User record);
 
     @SelectProvider(type=UserSqlProvider.class, method="selectByExample")

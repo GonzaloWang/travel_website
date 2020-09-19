@@ -28,6 +28,10 @@ public class SellerSqlProvider {
         SQL sql = new SQL();
         sql.INSERT_INTO("tab_seller");
         
+        if (record.getId() != null) {
+            sql.VALUES("id", "#{id,jdbcType=BIGINT}");
+        }
+        
         if (record.getSellerName() != null) {
             sql.VALUES("seller_name", "#{sellerName,jdbcType=VARCHAR}");
         }
