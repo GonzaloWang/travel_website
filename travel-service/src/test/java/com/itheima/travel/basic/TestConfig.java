@@ -1,6 +1,7 @@
 package com.itheima.travel.basic;
 
 import com.itheima.travel.config.SpringConfig;
+import com.itheima.travel.service.CategoryService;
 import com.itheima.travel.service.FavoriteService;
 import com.itheima.travel.service.UserService;
 import org.junit.runner.RunWith;
@@ -23,4 +24,7 @@ public abstract class TestConfig {
 
     @Autowired
     public FavoriteService favoriteService;
+
+    @Autowired
+    public CategoryService categoryService;
 }
