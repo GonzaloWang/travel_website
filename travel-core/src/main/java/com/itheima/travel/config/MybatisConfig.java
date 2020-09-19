@@ -1,7 +1,9 @@
 package com.itheima.travel.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.github.pagehelper.PageInterceptor;
 import org.apache.ibatis.logging.log4j2.Log4j2Impl;
+import org.apache.ibatis.plugin.Interceptor;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -12,6 +14,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 import javax.sql.DataSource;
+import java.util.Properties;
 
 /**
  * @Description：声明mybatis的配置
@@ -86,13 +89,27 @@ public class MybatisConfig {
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
-        //指定高级配置：驼峰、是否返回主键、缓存、日志、插件
+        //指定高级配置：驼峰、是否返回主键、缓存、日志
         org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
-        // 设置log4j2日志的支持
         configuration.setLogImpl(Log4j2Impl.class);
-        // 将相关的配置交给sqlSessionFactoryBean使用
         sqlSessionFactoryBean.setConfiguration(configuration);
+        //插接
+        sqlSessionFactoryBean.setPlugins(new Interceptor[]{initPageInterceptor()});
         return sqlSessionFactoryBean;
+    }
+
+    /**
+     * @Description 分页插件
+     */
+    @Bean
+    public PageInterceptor initPageInterceptor(){
+        PageInterceptor pageInterceptor = new PageInterceptor();
+        Properties properties = new Properties();
+        properties.setProperty("helperDialect", "mysql");
+        properties.setProperty("offsetAsPageNum", "true");
+        properties.setProperty("rowBoundsWithCount", "true");
+        pageInterceptor.setProperties(properties);
+        return pageInterceptor;
     }
 
 }

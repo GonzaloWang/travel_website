@@ -1,6 +1,7 @@
 package com.itheima.travel.basic;
 
 import com.itheima.travel.config.SpringConfig;
+import com.itheima.travel.service.FavoriteService;
 import com.itheima.travel.service.UserService;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,4 +20,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 public abstract class TestConfig {
     @Autowired
     public UserService userService;
+
+    @Autowired
+    public FavoriteService favoriteService;
 }

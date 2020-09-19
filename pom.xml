@@ -19,7 +19,7 @@
     </modules>
     <packaging>pom</packaging>
 
-        <!--配置属性变量-->
+        <!--配置属性变量   锁定jar包版本-->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
