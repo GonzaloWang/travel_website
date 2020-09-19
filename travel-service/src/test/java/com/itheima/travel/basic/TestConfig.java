@@ -3,6 +3,7 @@ package com.itheima.travel.basic;
 import com.itheima.travel.config.SpringConfig;
 import com.itheima.travel.service.CategoryService;
 import com.itheima.travel.service.FavoriteService;
+import com.itheima.travel.service.RouteService;
 import com.itheima.travel.service.UserService;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,4 +28,7 @@ public abstract class TestConfig {
 
     @Autowired
     public CategoryService categoryService;
+
+    @Autowired
+    public RouteService routeService;
 }
