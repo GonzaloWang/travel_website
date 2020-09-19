@@ -78,5 +78,4 @@ public class RouteServiceTest extends TestConfig {
         PageInfo<RouteVo> routeByPage = routeService.findRouteByPage(new RouteVo(), 1, 2);
         log.info("findRouteByPage----结束:{}",routeByPage.toString());
     }
-
 }

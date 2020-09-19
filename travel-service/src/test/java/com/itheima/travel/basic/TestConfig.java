@@ -1,10 +1,7 @@
 package com.itheima.travel.basic;
 
 import com.itheima.travel.config.SpringConfig;
-import com.itheima.travel.service.CategoryService;
-import com.itheima.travel.service.FavoriteService;
-import com.itheima.travel.service.RouteService;
-import com.itheima.travel.service.UserService;
+import com.itheima.travel.service.*;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -31,4 +28,7 @@ public abstract class TestConfig {
 
     @Autowired
     public RouteService routeService;
+
+    @Autowired
+    public RedisCacheService redisCacheService;
 }
